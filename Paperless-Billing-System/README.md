@@ -1,88 +1,119 @@
-## Paperless Billing System - Documentation
+# Paperless Billing System
 
-### Overview
-The Paperless Billing System is an innovative project designed to streamline the billing process by eliminating the need for paper receipts. The system leverages a microcontroller, keypad, LCD display, and SIM800L module to fetch item data from the cloud, process user inputs, calculate total prices, generate digital bills, and send these bills via SMS to the customer's mobile number. Additionally, the system saves the bill information back to the cloud for record-keeping and further analysis.
+## Overview
+The Paperless Billing System is designed to streamline the billing process by leveraging modern technology to eliminate the need for paper receipts. The system utilizes a microcontroller, keypad, LCD display, and SIM800L module to fetch item data from the cloud, process user inputs, calculate total prices, generate digital bills, and send these bills via SMS to the customer's mobile number. Additionally, the system saves the bill information back to the cloud for record-keeping and further analysis.
 
-### Components
-1. **Microcontroller**: Central processing unit for managing inputs, processing data, and controlling other components.
-2. **Keypad**: Used by the user to input item codes and mobile numbers.
-3. **LCD Display**: Displays prompts, item information, total price, and other messages to the user.
-4. **SIM800L Module**: Handles communication with the customer's mobile phone via SMS.
-5. **Power Supply**: Provides power to all components.
-6. **Cloud Server**: Stores item data and saves generated bills.
+## Features
+- Fetch item data from the cloud
+- User-friendly interface with keypad input and LCD display
+- Real-time total price calculation
+- Digital bill generation and SMS notification
+- Bill data storage on the cloud
 
-### Hardware Requirements
-- Microcontroller (e.g., Arduino, ESP32)
-- Keypad (4x4 matrix)
-- LCD Display (16x2 or similar)
-- SIM800L GSM Module
-- Power Supply (5V DC)
-- Jumper wires and connecting cables
+## Components
+- **Microcontroller**: Arduino, ESP32, or similar
+- **Keypad**: 4x4 matrix keypad
+- **LCD Display**: 16x2 LCD or similar
+- **SIM800L Module**: GSM module for SMS communication
+- **Power Supply**: 5V DC power source
 
-### Software Requirements
+## Software Requirements
 - Embedded C/C++ for microcontroller programming
 - HTTP library for making GET requests
 - GSM library for SMS communication
 - Cloud server with API for data retrieval and storage
 
-### System Architecture
-1. **Initialization**:
-   - Microcontroller initializes all components.
-   - Establishes a connection to the cloud server using the HTTP GET request.
-   - Fetches item data (item name, price, unique code) and stores it locally.
+## Getting Started
 
-2. **User Interaction**:
-   - LCD Display prompts the user to input item codes using the keypad.
-   - Microcontroller receives the input codes and matches them with the stored item data.
+### Hardware Setup
+1. Connect the microcontroller to the keypad, LCD display, and SIM800L module.
+2. Ensure the power supply is correctly connected to all components.
 
-3. **Billing Process**:
-   - Calculates the total price of the matched items.
-   - Generates a text bill displaying item details and total price.
-   - LCD Display shows the total price.
+### Software Setup
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/vinmahajan/Embedded-System-Projects/tree/main/Paperless-Billing-System
+   cd paperless-billing-system
+   ```
+2. Open the project in your preferred IDE (e.g., Arduino IDE for Arduino boards).
+3. Upload the provided code to the microcontroller.
+4. Ensure your cloud server is set up to handle HTTP GET and POST requests.
 
-4. **SMS Notification**:
-   - LCD Display prompts the user to input the customer's mobile number.
-   - Microcontroller sends the bill via SMS to the provided mobile number using the SIM800L module.
-   - Confirms SMS delivery on the LCD Display.
+### Usage
+1. **Initialization**: On startup, the microcontroller will fetch item data from the cloud.
+2. **Input Item Codes**: The LCD display will prompt the user to input item codes using the keypad.
+3. **Calculate Total**: The system will match input codes with the fetched data and calculate the total price.
+4. **Generate Bill**: A digital bill will be generated, displayed on the LCD, and the total price will be shown.
+5. **Send SMS**: The user will be prompted to enter the customer's mobile number. The bill will be sent via SMS.
+6. **Save Bill**: The bill details will be saved to the cloud for future reference.
 
-5. **Data Storage**:
-   - Microcontroller saves the bill details to the cloud server for future reference.
+## Example Code
 
-### Workflow
-1. **Fetch Data from Cloud**:
+### Fetch Data from Cloud
+```c
+void fetchDataFromCloud() {
+    // Initialize HTTP GET request to cloud server
+    // Parse response and store item data locally
+}
+```
 
-2. **Input Item Codes**:
+### Input Item Codes
+```c
+void inputItemCodes() {
+    // Display prompt on LCD
+    // Read input from keypad
+    // Match input codes with stored item data
+}
+```
 
-3. **Calculate Total Price**:
+### Calculate Total Price
+```c
+float calculateTotalPrice() {
+    float total = 0.0;
+    // Loop through matched items and sum their prices
+    return total;
+}
+```
 
-4. **Generate and Display Bill**:
+### Generate and Display Bill
+```c
+void generateBill() {
+    // Generate text bill with item details and total price
+    // Display total price on LCD
+}
+```
 
-5. **Input Customer Mobile No.**:
+### Send SMS
+```c
+void sendSMS(char* phoneNumber, char* message) {
+    // Initialize SIM800L module
+    // Send SMS with bill details to the provided phone number
+    // Confirm SMS delivery
+}
+```
 
-6. **Send SMS of Bill to Customer**:
+### Save Bill to Cloud
+```c
+void saveBillToCloud(char* billDetails) {
+    // Initialize HTTP POST request to cloud server
+    // Send bill details to server for storage
+}
+```
 
-7. **Save Bill to Cloud**:
+## Future Enhancements
+- **QR Code Generation**: Generate a QR code for the bill for easy scanning and payment.
+- **Voice Input**: Integrate voice recognition for inputting item codes and mobile numbers.
+- **Mobile App Integration**: Develop a companion mobile app for customers to receive and manage their bills.
+- **Real-Time Inventory Management**: Update inventory levels in real-time as items are billed.
+- **Customer Loyalty Program**: Implement a loyalty program where customers earn points for each purchase.
+- **Environmental Impact Analysis**: Display the environmental impact of going paperless, such as the number of trees saved.
 
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-### Innovative Enhancements
-1. **QR Code Generation**:
-   - Generate a QR code for the bill which can be scanned for payment or viewing on mobile devices.
-   - Display the QR code on the LCD screen.
+## Contact
+For any inquiries or issues, please contact Vinayak Mahajan at vinayakmahajan06@gmail.com.
 
-2. **Voice Input**:
-   - Integrate a voice recognition module to allow users to input item codes and mobile numbers via voice commands.
+---
 
-3. **Mobile App Integration**:
-   - Develop a companion mobile app for customers to receive and manage their bills, view past transactions, and make payments.
-
-4. **Real-Time Inventory Management**:
-   - Update inventory levels in real-time as items are billed, and fetch updated inventory data from the cloud.
-
-5. **Customer Loyalty Program**:
-   - Implement a loyalty program where customers earn points for each purchase, stored in the cloud and displayed on the LCD screen.
-
-6. **Environmental Impact Analysis**:
-   - Include a feature to calculate and display the environmental impact of going paperless, such as the number of trees saved.
-
-### Conclusion
-The Paperless Billing System provides a modern, efficient, and environmentally friendly solution for handling billing processes. By integrating additional innovative features, the system can offer enhanced convenience and functionality, making it a valuable tool for both businesses and customers.
+Enjoy using the Paperless Billing System! Save trees, go digital!
